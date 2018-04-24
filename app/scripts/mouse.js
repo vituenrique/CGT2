@@ -36,9 +36,6 @@ canvas.addEventListener('mousemove', mouseEventTranslate, false);
 canvas.addEventListener('mousemove', mouseEventOnScaling, false);
 canvas.addEventListener('mousemove', mouseEventOnRotation, false);
 
-//document.getElementById('hull').addEventListener('click', mouseEventConvexHullStart, false);
-document.getElementById('mirror').addEventListener('click', mouseEventDrawQuadrants, false);
-
 function mouseEventGetMousePosition(evt){
 	var rect = canvas.getBoundingClientRect();
 	mousePos = {
@@ -336,19 +333,7 @@ function mouseEventOnMirrorStart(){
 	if(mirror == 1 && pick != null){
 		var quad = pick.getQuadrant(mousePos);
 		pick.mirror(quad);	
-		drawCanvas();
 		mirror = 0;
-	}
-}
-
-function mouseEventDrawQuadrants(){
-	if(mirror == 1 && pick != null){
-		// Draw quadrants
-		var box = pick.boundingBox();
-		new Line(new Point(0, box.y), new Point (canvas.width, box.y)).draw(context, true);
-		new Line(new Point(0, box.y - box.height), new Point (canvas.width, box.y - box.height)).draw(context, true);
-		new Line(new Point(box.x, 0), new Point (box.x, canvas.height)).draw(context, true);
-		new Line(new Point(box.x + box.width, 0), new Point (box.x + box.width,  canvas.height)).draw(context, true);
 		drawCanvas();
 	}
 }

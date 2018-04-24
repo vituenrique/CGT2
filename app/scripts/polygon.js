@@ -262,42 +262,6 @@ Polygon.prototype.mirror = function(orientation){
 	}
 }
 
-Polygon.prototype.whichSideOfLine = function(lineEndptA, lineEndptB, ptSubject) {
-    return (ptSubject.x - lineEndptA.x) * (lineEndptB.y - lineEndptA.y) - (ptSubject.y - lineEndptA.y) * (lineEndptB.x - lineEndptA.x);
-};   
-
-Polygon.prototype.convexHull = function() {
-	var hull = [];
-    for(var i = 0; i < this.vertices.length; i++) {
-        for(var j = 0; j < this.vertices.length; j++) {
-            if(i === j) {
-                continue;
-            }   
-            var ptI = this.vertices[i];
-            var ptJ = this.vertices[j];
-            
-            var allPointsOnTheRight = true;
-            for(var k = 0; k < this.vertices.length; k++) {
-                if(k === i || k === j) {
-                    continue;
-                }
-                
-                var d = this.whichSideOfLine(ptI, ptJ, this.vertices[k]);
-                if(d < 0) {
-                    allPointsOnTheRight = false;
-                    break;
-                }                        
-            }
-            
-            if(allPointsOnTheRight) {
-                hull.push(ptI);
-                hull.push(ptJ);
-            }
-        }
-    }
-    return hull;
-}
-
 Polygon.prototype.toString = function(){
 	var str = this.ID;
 	for(var i = 0; i < this.vertices.length; i++){

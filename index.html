@@ -12,45 +12,68 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:void(0);" onclick="generateNewPoint();">Point</a>
+						<a class="nav-link" href="javascript:void(0);" title="Point" onclick="generateNewPoint();">Point</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:void(0);" onclick="generateNewLine();">Line</a>
+						<a class="nav-link" href="javascript:void(0);" title="Line" onclick="generateNewLine();">Line</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:void(0);" onclick="generateNewArc();">Arc</a>
+						<a class="nav-link" href="javascript:void(0);" title="Arc" onclick="generateNewArc();">Arc</a>
 					</li>
 					<li class="nav-item">
-					  	<a class="nav-link" href="javascript:void(0);" onclick="generateNewBezier();">Bezier</a>
+					  	<a class="nav-link" href="javascript:void(0);" title="Bezier" onclick="generateNewBezier();">Bezier</a>
 					</li>
 					<li class="nav-item">
-					  	<a class="nav-link" href="javascript:void(0);" onclick="generateNewPolygon();">Polygon</a>
+					  	<a class="nav-link" href="javascript:void(0);" title="Polygon" onclick="generateNewPolygon();">Polygon</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:void(0);" onclick="translateFlag()">Translate</a>
+						<a class="nav-link" href="javascript:void(0);" title="Translate" onclick="translateFlag()">
+							<i class="fas fa-external-link-alt fa-lg"></i>
+						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:void(0);" onclick="scaleFlag();">Scale</a>
+						<a class="nav-link" href="javascript:void(0);" title="Scale" onclick="scaleFlag();">
+							<i class="fas fa-expand-arrows-alt fa-lg"></i>
+						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:void(0);" onclick="rotationFlag();">Rotate</a>
+						<a class="nav-link" href="javascript:void(0);" title="Rotate" onclick="rotationFlag();">
+							<i class="fas fa-redo-alt fa-lg"></i>
+						</a>
 					</li>
 					<li class="nav-item">
-						<a id="mirror" class="nav-link" href="javascript:void(0);" onclick="mirrorFlag();">Mirror</a>
+						<a id="mirror" class="nav-link" href="javascript:void(0);" title="Mirror" onclick="mirrorFlag();drawQuadrants();">
+							<i class="fab fa-accusoft fa-lg"></i>
+						</a>
 					</li>
 					<li class="nav-item">
-						<a id="hull" class="nav-link" href="javascript:void(0);" onclick="hullFlag();">Convex Hull</a>
+						<a id="hull" class="nav-link" href="javascript:void(0);" title="Convex Hull" onclick="hullFlag();">
+							<i class="fab fa-connectdevelop fa-lg"></i>
+						</a>
+					</li>
+				</ul>
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);" title="Download" onclick="saveCanvas();">
+							<i class="fas fa-download fa-lg"></i>
+						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:void(0);" onclick="saveCanvas();">Save</a>
+						<a class="nav-link" href="javascript:void(0);" title="Upload" onclick="uploadCanvas();">
+							<i class="fas fa-upload fa-lg"></i>
+						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:void(0);" onclick="uploadCanvas();">Upload</a>
-					</li>
+						<a class="nav-link" href="javascript:void(0);" title="Draw file" onclick="drawFile();">
+							<i class="fas fa-pencil-alt fa-lg"></i>
+						</a>
+					</li> 
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:void(0);" onclick="drawFile();">Draw File</a>
+						<a class="nav-link" href="javascript:void(0);" title="Clear canvas" onclick="clearCanvas();">
+							<i class="fas fa-eraser fa-lg"></i>
+						</a>
 					</li> 
 				</ul>
 			</div>

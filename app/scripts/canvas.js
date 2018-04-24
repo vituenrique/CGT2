@@ -43,6 +43,14 @@ function resizeCanvas(){
 	drawCanvas();
 }
 
+function clearCanvas(){
+	setCanvasSize();
+	context.fillStyle = canvasColor;
+	context.fillRect(0, 0, canvas.width, canvas.height);
+	drawBuffer = [];
+	hullBuffer = [];
+}
+
 function drawCanvas(pick = null){
 	setCanvasSize();
 	context.fillStyle = canvasColor;
@@ -53,6 +61,17 @@ function drawCanvas(pick = null){
 			context.setLineDash([0,0]);
 			if(drawBuffer[i] != pick) drawBuffer[i].draw(context);
 		}
+	}
+}
+
+function drawQuadrants(){
+	if(pick != null && mirror == 1){
+		var box = pick.boundingBox();
+		new Line(new Point(0, box.y), new Point (canvas.width, box.y)).draw(context, true);
+		new Line(new Point(0, box.y + box.height), new Point (canvas.width, box.y + box.height)).draw(context, true);
+		new Line(new Point(box.x, 0), new Point (box.x, canvas.height)).draw(context, true);
+		new Line(new Point(box.x + box.width, 0), new Point (box.x + box.width,  canvas.height)).draw(context, true);
+		pick.draw(context);
 	}
 }
 
@@ -146,112 +165,6 @@ function getColor() {
 	return colorPicker.value;
 }
 
-function whichSideOfLine(lineEndptA, lineEndptB, ptSubject) {
-    return (ptSubject.x - lineEndptA.x) * (lineEndptB.y - lineEndptA.y) - (ptSubject.y - lineEndptA.y) * (lineEndptB.x - lineEndptA.x);
-} 
- function truncAngle(a){
-	while(a < 0){
-	  a += 2*Math.PI;
-	}
-	while(a > 2*Math.PI){
-	  a -= 2*Math.PI;
-	}
-	return a;
-}
-function getAngleRad(p1,p2){
-	return Math.atan2(p1.y - p2.y, p1.x - p2.x);
-}
-function getOrientation(p1, p2, p3){
-    var p2Angle = truncAngle(getAngleRad(p1,p2));
-    var p3Angle = truncAngle(getAngleRad(p1,p3));
-    return p2Angle == p3Angle ? 0 : p2Angle > p3Angle ? 1 : 2;  
-}
-	
-function compare(p1, p2){
-    var orientation = getOrientation(new Point(0, 0), p1, p2);
-    if(orientation == 0){
-    	if(dist(new Point(0, 0),p2)>=dist(new Point(0, 0),p1)){
-    		return -1;
-    	}else{
-    		return 1;
-    	}
-    }else{
-    	if(orientation==2){return -1;}
-    		else{return 1;}
-    }
-}
-
-function dist(p1, p2){
-	return Math.sqrt(Math.pow(p1.x - p2.x,2) + Math.pow(p1.y - p2.y,2));
-}
-
-/*function convexHull(points) {
-	var hull = [];
-
-	//points.sort(compare);
-
-    for (var i = 0; i < points.length; i++){
-        for (var j = i+1; j < points.length; j++){
-            var x1 = points[i].x;
-            var x2 = points[j].x;
-            var y1 = points[i].y;
-            var y2 = points[j].y;
- 
-            var a1 = y1-y2;
-            var b1 = x2-x1;
-            var c1 = x1*y2-y1*x2;
-            var pos = 0, neg = 0;
-            for (var k=0; k<points.length; k++){
-                if (a1*points[k].x+b1*points[k].y+c1 <= 0)
-                    neg++;
-                if (a1*points[k].x+b1*points[k].y+c1 >= 0)
-                    pos++;
-            }
-            if (pos == points.length || neg == points.length){
-                hull.push(points[i]);
-                hull.push(points[j]);
-            }
-        }
-    }
-    return hull;
-}*/
-
-/*function convexHull(points) {
-	var hull = [];
-
-	points.sort(compare);
-
-    for(var i = 0; i < points.length; i++) {
-        for(var j = 0; j < points.length; j++) {
-            if(i === j) {
-                continue;
-            }   
-            var ptI = points[i];
-            var ptJ = points[j];
-
-            var allPointsOnTheRight = true;
-
-            for(var k = 0; k < points.length; k++) {
-                if(k === i || k === j) {
-                    continue;
-                }
-                
-                var d = whichSideOfLine(ptI, ptJ, points[k]);
-                if(d < 0) {
-                    allPointsOnTheRight = false;
-                    break;
-                }                        
-            }
-            
-            if(allPointsOnTheRight) {
-                hull.push(ptI);
-                hull.push(ptJ);
-            }
-        }
-    }
-    return hull;
-}
-*/
 function setAllFalse(){
 	drawPoint = false;
 	drawLine = 0;
