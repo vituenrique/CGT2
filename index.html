@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CG</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="app/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="app/css/fontawesome-all.css">
+	</head>
+	<body> 
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 5;">
+			<a class="navbar-brand" href="index.html">CG</a>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);" onclick="generateNewPoint();">Point</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);" onclick="generateNewLine();">Line</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);" onclick="generateNewArc();">Arc</a>
+					</li>
+					<li class="nav-item">
+					  	<a class="nav-link" href="javascript:void(0);" onclick="generateNewBezier();">Bezier</a>
+					</li>
+					<li class="nav-item">
+					  	<a class="nav-link" href="javascript:void(0);" onclick="generateNewPolygon();">Polygon</a>
+					</li>
+				</ul>
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);" onclick="translateFlag()">Translate</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);" onclick="scaleFlag();">Scale</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);" onclick="rotationFlag();">Rotate</a>
+					</li>
+					<li class="nav-item">
+						<a id="mirror" class="nav-link" href="javascript:void(0);" onclick="mirrorFlag();">Mirror</a>
+					</li>
+					<li class="nav-item">
+						<a id="hull" class="nav-link" href="javascript:void(0);" onclick="hullFlag();">Convex Hull</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);" onclick="saveCanvas();">Save</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);" onclick="uploadCanvas();">Upload</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);" onclick="drawFile();">Draw File</a>
+					</li> 
+				</ul>
+			</div>
+		</nav>
+		<canvas id="canvas"></canvas>
+		<input id="uploader" type="file" name="file" style="display: none;" onclick="uploadFile()">
+		<!--TODO: Refatorar esse colorwheel -->
+		<!-- <input id="colorwheel" style="width: 100px; height:30px; margin-left: 7.5px; margin-bottom: 10px;" type="color" value="#000000" name="chooseColor" ><br> -->
+
+		<!-- libraries -->
+		
+		<!-- Jquery -->
+		<script type="text/javascript" src="app/js/jquery-3.3.1.slim.min.js"></script>
+		<!-- Popper -->
+		<script type="text/javascript" src="app/js/popper.min.js"></script>
+		<!-- Bootstrap -->
+		<script type="text/javascript" src="app/js/bootstrap.min.js"></script>
+		<!-- Fontawesome -->
+		<script type="text/javascript" src="app/js/fontawesome-all.js"></script>
+		<!-- FileSaver -->
+		<script type="text/javascript" src="app/js/FileSaver.min.js"></script>	
+		<!-- ./ libraries -->
+
+		<script type="text/javascript" src="app/scripts/canvas.js"></script>
+		<script type="text/javascript" src="app/scripts/point.js"></script>
+		<script type="text/javascript" src="app/scripts/line.js"></script>
+		<script type="text/javascript" src="app/scripts/arc.js"></script>
+		<script type="text/javascript" src="app/scripts/bezier.js"></script>
+		<script type="text/javascript" src="app/scripts/polygon.js"></script>
+		<script type="text/javascript" src="app/scripts/mouse.js"></script>
+		<script type="text/javascript" src="app/scripts/grahamScan.js"></script>
+
+	</body>	
+</html>
